@@ -463,16 +463,17 @@
   /* ---------- SECTIONS (ROOT) VIEW ---------- */
   .section-grid{
     display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:24px;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
     margin-top:8px;
   }
-  @media (max-width:760px){ .section-grid{grid-template-columns:1fr;} }
+  @media (max-width:980px){ .section-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:640px){ .section-grid{grid-template-columns:1fr;} }
 
   .section-card{
     background:linear-gradient(160deg, #ffffff 0%, #fbfcff 100%);
     border-radius:22px;
-    padding:34px 30px 30px;
+    padding:32px 26px 28px;
     cursor:pointer;
     position:relative;
     overflow:hidden;
@@ -482,6 +483,8 @@
       0 18px 40px -14px rgba(21,62,123,0.30),
       0 4px 10px rgba(21,62,123,0.10);
     transition:.28s cubic-bezier(.2,.7,.3,1);
+    display:flex;
+    flex-direction:column;
   }
   .section-card::before{
     content:"";
@@ -500,10 +503,10 @@
     border-color:rgba(0,204,193,0.4);
   }
   .section-card .icon-wrap{
-    width:66px;height:66px;
-    border-radius:19px;
+    width:62px;height:62px;
+    border-radius:18px;
     display:flex;align-items:center;justify-content:center;
-    margin-bottom:20px;
+    margin-bottom:18px;
     background:linear-gradient(150deg, #2456a3 0%, var(--navy) 55%, var(--navy-dark) 100%);
     box-shadow:
       inset 0 1px 2px rgba(255,255,255,0.4),
@@ -517,10 +520,10 @@
     border-radius:inherit;
     background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.35), transparent 55%);
   }
-  .section-card .icon-wrap svg{width:36px;height:36px;filter:drop-shadow(0 3px 3px rgba(0,0,0,0.25));position:relative;z-index:1;}
+  .section-card .icon-wrap svg{width:32px;height:32px;filter:drop-shadow(0 3px 3px rgba(0,0,0,0.25));position:relative;z-index:1;}
   .section-card h3{
     font-family:'Rubik',sans-serif;
-    font-size:21px;
+    font-size:19px;
     font-weight:800;
     margin:0 0 10px;
     color:var(--navy-dark);
@@ -529,8 +532,9 @@
   .section-card p{
     margin:0;
     color:var(--muted);
-    font-size:14.5px;
+    font-size:14px;
     line-height:1.7;
+    flex:1;
   }
   .section-card .cta{
     margin-top:20px;
@@ -538,13 +542,13 @@
     align-items:center;
     gap:6px;
     font-weight:700;
-    font-size:14px;
+    font-size:13.5px;
     color:var(--orange-dark);
   }
   .section-card .cta svg{width:16px;height:16px;transition:.2s;}
   .section-card:hover .cta svg{transform:translateX(-4px);}
   .section-card .corner-dot{
-    position:absolute; top:24px; left:22px;
+    position:absolute; top:22px; left:20px;
     width:9px;height:9px;border-radius:50%;
     background:var(--teal);
     box-shadow:0 0 0 4px rgba(0,204,193,0.18), 0 2px 6px rgba(0,204,193,0.5);
@@ -613,9 +617,9 @@
   .btn-scenario:hover{box-shadow:0 8px 18px -2px rgba(232,125,40,0.6), inset 0 1px 1px rgba(255,255,255,0.35);}
 
   @media (max-width:560px){
-    .scenario-row{flex-direction:column;align-items:stretch;padding:18px 18px;}
-    .scenario-actions{width:100%;}
-    .scenario-actions .btn{width:100%;justify-content:center;}
+    .scenario-row, .guide-row{flex-direction:column;align-items:stretch;padding:18px 18px;}
+    .scenario-actions, .guide-actions{width:100%;}
+    .scenario-actions .btn, .guide-actions .btn{width:100%;justify-content:center;}
   }
 
   .scenario-field{margin-bottom:18px;}
@@ -642,6 +646,114 @@
     font-size:13.5px;
     padding:8px 16px;
     border-radius:100px;
+  }
+
+  /* ---------- GUIDE VIEW ---------- */
+  .guide-list{display:flex;flex-direction:column;gap:14px;}
+  .guide-row{
+    background:linear-gradient(160deg, #ffffff 0%, #fbfcff 100%);
+    border-radius:16px;
+    padding:20px 22px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.8) inset,
+      0 10px 22px -8px rgba(21,62,123,0.22),
+      0 2px 6px rgba(21,62,123,0.08);
+    display:flex;
+    align-items:center;
+    gap:18px;
+    border-right:5px solid var(--navy);
+    border-top:1px solid rgba(21,62,123,0.06);
+    border-bottom:1px solid rgba(21,62,123,0.06);
+    border-left:1px solid rgba(21,62,123,0.06);
+    transition:.22s;
+    cursor:pointer;
+  }
+  .guide-row:hover{
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.8) inset,
+      0 16px 30px -10px rgba(21,62,123,0.3),
+      0 4px 10px rgba(21,62,123,0.18);
+    transform:translateY(-2px);
+  }
+  .guide-main{flex:1;min-width:0;}
+  .guide-num{
+    font-family:'Rubik',sans-serif;
+    font-weight:800;
+    font-size:11.5px;
+    color:var(--navy);
+    background:var(--navy-light);
+    display:inline-block;
+    padding:3px 10px;
+    border-radius:100px;
+    margin-bottom:8px;
+  }
+  .guide-title{
+    font-family:'Rubik',sans-serif;
+    font-weight:700;
+    font-size:16px;
+    color:var(--navy-dark);
+    margin:0 0 6px;
+    line-height:1.4;
+  }
+  .guide-desc{
+    color:var(--muted);
+    font-size:13.5px;
+    line-height:1.6;
+    margin:0;
+  }
+  .guide-actions{flex:none;}
+  .btn-guide{
+    background:linear-gradient(150deg, #1c4a91, var(--navy-dark));
+    color:#fff;
+    box-shadow:0 4px 12px -2px rgba(21,62,123,0.5), inset 0 1px 1px rgba(255,255,255,0.25);
+  }
+  .btn-guide:hover{box-shadow:0 8px 18px -2px rgba(21,62,123,0.6), inset 0 1px 1px rgba(255,255,255,0.25);}
+
+  .guide-content h4{
+    font-family:'Rubik',sans-serif;
+    font-size:15px;
+    font-weight:700;
+    color:var(--navy-dark);
+    margin:20px 0 8px;
+  }
+  .guide-content h4:first-child{margin-top:0;}
+  .guide-content p{margin:0 0 10px;font-size:14.5px;line-height:1.75;color:var(--text);}
+  .guide-content ul, .guide-content ol{margin:0 0 12px;padding-inline-start:20px;}
+  .guide-content li{margin-bottom:6px;font-size:14.5px;line-height:1.6;color:var(--text);}
+  .guide-content strong{color:var(--navy-dark);}
+  .guide-content .content-block{margin-bottom:16px;}
+  .guide-content .content-block:last-child{margin-bottom:0;}
+  .guide-content .content-block .field-label{
+    display:block;
+    font-family:'Rubik',sans-serif;
+    font-weight:700;
+    font-size:12px;
+    color:var(--teal-dark);
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    margin-bottom:6px;
+  }
+  .guide-content .content-block p{margin:0;}
+  .guide-content .content-block ul{margin:0;}
+  .guide-content .quote-box{
+    background:var(--bg);
+    border-right:3px solid var(--orange);
+    border-radius:10px;
+    padding:12px 16px;
+    margin:10px 0 16px;
+    font-style:italic;
+    color:var(--text);
+    font-size:14px;
+    line-height:1.75;
+  }
+  .guide-content .quote-box .quote-label{
+    display:block;
+    font-style:normal;
+    font-weight:700;
+    font-size:12px;
+    color:var(--orange-dark);
+    margin-bottom:5px;
+    font-family:'Rubik',sans-serif;
   }
 </style>
 </head>
@@ -709,6 +821,29 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         </div>
       </div>
+
+      <div class="section-card" id="cardGuide">
+        <div class="corner-dot"></div>
+        <div class="icon-wrap">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="scF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe9fb"/></linearGradient>
+              <linearGradient id="scG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb46b"/><stop offset="1" stop-color="#ff8a2e"/></linearGradient>
+            </defs>
+            <circle cx="24" cy="24" r="21" fill="#2a5aa6" opacity="0.35"/>
+            <path d="M10 14a2 2 0 0 1 2-2h9v24h-9a2 2 0 0 1-2-2z" fill="url(#scF)"/>
+            <path d="M27 12h9a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2h-9z" fill="url(#scG)"/>
+            <path d="M24 12v24" stroke="#2a5aa6" stroke-width="1.6" opacity="0.5"/>
+            <path d="M14 18h4M14 22h4M14 26h3" stroke="#2a5aa6" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+          </svg>
+        </div>
+        <h3>מחברים את האפליקציה לתהליך - מדריך לצוות המקצועי</h3>
+        <p>עקרונות וכלים לתיווך האפליקציה למקבל השירות ולשילובה בתהליך השיקומי - מההיכרות הראשונית ועד לשימוש משמעותי בשגרה.</p>
+        <div class="cta">
+          כניסה למדריך
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -749,6 +884,27 @@
       </div>
     </div>
     <div class="scenario-list" id="scenarioList"></div>
+  </div>
+
+  <!-- GUIDE VIEW -->
+  <div class="view" id="guideView">
+    <div class="domain-header">
+      <div class="icon-wrap" id="guideIcon">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="scH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe9fb"/></linearGradient>
+          </defs>
+          <path d="M10 14a2 2 0 0 1 2-2h9v24h-9a2 2 0 0 1-2-2z" fill="url(#scH)"/>
+          <path d="M27 12h9a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2h-9z" fill="#ffb46b"/>
+          <path d="M24 12v24" stroke="#2a5aa6" stroke-width="1.6" opacity="0.5"/>
+        </svg>
+      </div>
+      <div>
+        <h2>מחברים את האפליקציה לתהליך - מדריך לצוות המקצועי</h2>
+        <p id="guideSubtitle">עקרונות וכלים לתיווך האפליקציה למקבל השירות ולשילובה בתהליך השיקומי - מההיכרות הראשונית ועד לשימוש משמעותי בשגרה.</p>
+      </div>
+    </div>
+    <div class="guide-list" id="guideList"></div>
   </div>
 </main>
 
@@ -791,6 +947,167 @@ const SCENARIOS = [
   {"title":"\"אני ער כל הלילה וישן חצי יום\"","description":"דפוס השינה משפיע על תפקוד, הגעה לפגישות והיכולת לקיים שגרה.","goal":"להגביר מודעות לדפוסי השינה ולבחור שינוי אחד התומך בשינה איכותית יותר.","tool":"היגיינת שינה","how":"היחידה עוסקת בהיכרות עם דפוסי השינה, בדיקת הרגלים ובניית טקס שינה.","staff":"מעבר מהמלצות כלליות על שעות שינה לבדיקה משותפת של דפוסים והרגלים ולבחירת שינוי קטן שניתן לעקוב אחריו.","client":"הגברת המודעות לקשר בין הרגלים לבין איכות השינה וחיזוק היכולת לבחור ולנסות שינוי מותאם במקום להתמודד עם הבעיה כמכלול."},
   {"title":"הרופא אמר שאני צריך לעשות בדיקות, אבל אני דוחה את זה כבר חודשים","description":"קיימת המלצה למעקב רפואי, אך הבדיקות או התורים אינם מתבצעים.","goal":"לזהות מה מקשה על ביצוע המעקב ולבחור צעד מעשי לקידומו.","tool":"דאגה לבריאות פיזית","how":"היחידה כוללת בדיקת המעקבים הרפואיים, זיהוי חסמים ובחינה ראשונית של הרגלי חיים התומכים בבריאות.","staff":"סיוע בזיהוי החסם המעשי או הרגשי שמונע ביצוע מעקב רפואי ובהגדרת צעד ישים לקידומו.","client":"חיזוק המעורבות והאחריות בניהול הבריאות הפיזית, תוך הפיכת חסם כללי לצעד מעשי שניתן לבצע."},
   {"title":"\"אני מכיר את השכנים רק מזה שאני אומר להם שלום במעלית\"","description":"קיים רצון להרגיש שייך יותר לסביבה, אך הקשרים ביומיום נשארים שטחיים ומצומצמים.","goal":"למפות קשרים בסביבה הקרובה ולבחור צעד קטן לחיזוק תחושת השייכות.","tool":"שותפים לקהילה – יחסי שכנות ומשמעות","how":"היחידה מסייעת לזהות אילו קשרים מתאימים כרגע, מי נמצא סביב האדם ביומיום ואילו צעדים קטנים יכולים לחזק חיבור לסביבה.","staff":"סיוע בהגדרת מטרות חברתיות קטנות ומציאותיות בסביבה הקרובה.","client":"חיזוק תחושת השייכות והביטחון ביצירת קשרים בסביבה הקרובה באמצעות צעדים קטנים שמתאימים לרצון ולקצב האישי."}
+];
+
+const GUIDE_CHAPTERS = [
+  {"title":"לקראת שימוש משמעותי","summary":"למה האופן שבו מציגים את האפליקציה קובע את הצלחתה, ומה תפקידכם בתהליך.","html":`
+    <p>מסמך זה נועד לסייע לכם - מתאמי טיפול, מדריכי שיקום ואנשי צוות המלווים מקבלי שירות - להציג, להסביר ולהנגיש את אפליקציית SequelCare בצורה פשוטה, נעימה ומקדמת.</p>
+    <p>האפליקציה אינה באה להחליף את הקשר האנושי, את שיקול הדעת המקצועי או את העבודה השיקומית שאתם עושים מדי יום. להפך, היא נועדה לחזק את העבודה שלכם, לאפשר רצף בין המפגשים, להעמיק את ההיכרות עם מקבל השירות, ולעזור לו לקחת חלק פעיל יותר בתהליך האישי שלו.</p>
+    <div class="quote-box"><span class="quote-label">לזכור</span>הדרך שבה מציגים את האפליקציה חשובה לא פחות מהאפליקציה עצמה. כאשר מקבל השירות מבין כיצד כלי זה יכול לעזור לו, מרגיש שיש לו בחירה ושליטה, ומתנסה בו יחד איתכם - הסיכוי לשימוש משמעותי ומתמשך עולה מאוד.</div>
+  `},
+  {"title":"מטרת האפליקציה – הנגשה למקבל השירות","summary":"איך להציג את האפליקציה כך שתיתפס ככלי מקדם, ולא כעוד דרישה או כלי פיקוח.","html":`
+    <p>כאשר מציגים את האפליקציה, חשוב לא להתחיל מהטכנולוגיה.</p>
+    <div class="quote-box"><span class="quote-label">לא כדאי לפתוח ב</span>"יש אפליקציה חדשה שצריך להשתמש בה".</div>
+    <div class="quote-box"><span class="quote-label">עדיף להתחיל מהחוויה של האדם</span>"אנחנו רוצים שיהיה לנו יותר קל להבין יחד מה עובר עליך גם בין הפגישות, מה עוזר לך, איפה קשה לך, ואיך אפשר להתקדם בצעדים קטנים שמתאימים לך."</div>
+    <p>המוקד המרכזי הוא פשוט: האפליקציה היא כלי שעוזר לנו לעבוד יחד בצורה יותר מדויקת, נוחה ורציפה. היא מאפשרת למקבל השירות לשתף מה עובר עליו, לעקוב אחר דברים שחשובים לו, לקבל משימות או תרגולים, ולראות יחד עם הצוות את ההתקדמות לאורך זמן.</p>
+    <p>אחד האתגרים המרכזיים הוא שמקבלי שירות עלולים לחוות את האפליקציה כעוד דרישה, עוד משימה, או עוד משהו שהם "צריכים לעשות". לכן חשוב להבהיר כבר מההתחלה:</p>
+    <ul>
+      <li>האפליקציה אינה מבחן</li>
+      <li>האפליקציה אינה כלי פיקוח</li>
+      <li>האפליקציה אינה נועדה לבדוק אם האדם "עמד בציפיות"</li>
+    </ul>
+    <p><strong>האפליקציה היא כלי משותף שנועד לעזור לו ולצוות להבין טוב יותר את התהליך.</strong></p>
+    <div class="quote-box"><span class="quote-label">אפשר לומר</span>"המטרה היא לא לבדוק אותך, אלא להבין יחד איתך מה קורה ביום־יום. לפעמים דברים חשובים קורים בין הפגישות, וכשאנחנו רואים אותם יחד - קל יותר להבין מה עוזר לך ומה כדאי לשנות."</div>
+  `},
+  {"title":"איך להציג את האפליקציה בפעם הראשונה","summary":"ניסוחים מומלצים לפתיחה, להמשך ההסבר ולחיזוק תחושת הבחירה של מקבל השירות.","html":`
+    <p>מומלץ להציג את האפליקציה בתוך פגישה אישית, בנחת, ולא כמשימה שנשלחת למקבל השירות לביצוע עצמאי.</p>
+    <div class="quote-box"><span class="quote-label">ניסוח מוצע לפתיחה</span>"אני רוצה להראות לך כלי חדש שיכול לעזור לנו לעבוד יחד בצורה יותר נוחה ומדויקת. זו אפליקציה שמאפשרת לך לשתף איך עובר עליך היום, לעקוב אחרי דברים שחשובים לך, ולקבל תרגילים או משימות קטנות שיכולות לעזור לך להתקדם בקצב שמתאים לך."</div>
+    <div class="quote-box"><span class="quote-label">המשך ההסבר</span>"הרעיון הוא שלא נצטרך להסתמך רק על מה שאנחנו זוכרים מהפגישה. תוכל לעדכן גם בין הפגישות, בזמן שנוח לך, וככה נוכל לראות יחד מה משפיע עליך, מה עובד טוב, ואיפה אולי צריך עוד תמיכה."</div>
+    <div class="quote-box"><span class="quote-label">חיזוק תחושת הבחירה</span>"אתה לא חייב לשתף הכול. נחליט יחד מה נכון לך לעקוב אחריו, במה להתמקד, ואיך להשתמש בזה בצורה שתהיה לך נוחה."</div>
+  `},
+  {"title":"עקרונות בתיווך ובהטמעת השימוש","summary":"חמישה עקרונות מעשיים: מהתחלה משותפת ועד שילוב האפליקציה בשגרת היום.","html":`
+    <h4>1. להתחיל יחד – לא לבד</h4>
+    <p>ההתנסות הראשונה צריכה להיעשות יחד עם איש הצוות - התקנה וכניסה לאפליקציה. כדאי לפתוח את האפליקציה יחד, לעבור על המסכים הראשונים, להסביר מה רואים, ולבצע פעולות ראשונות בסיסיות בצורה משותפת.</p>
+    <div class="quote-box"><span class="quote-label">לדוגמה</span>"בוא ניכנס יחד ונראה מה יש כאן. לא צריך להבין הכול עכשיו. נעשה רק צעד ראשון."</div>
+    <h4>2. לחבר את האפליקציה למטרה אישית</h4>
+    <p>ככל שהשימוש באפליקציה קשור למשהו שחשוב למקבל השירות, כך הוא ירגיש רלוונטי יותר.</p>
+    <div class="quote-box"><span class="quote-label">במקום לומר</span>"צריך למלא מדדים פעמיים בשבוע."</div>
+    <div class="quote-box"><span class="quote-label">עדיף לומר</span>"אמרת שחשוב לך להבין למה יש ימים שבהם קשה לך לצאת מהבית. אולי נשתמש באפליקציה כדי לעקוב יחד אחרי שינה, אנרגיה ויציאה מהבית, ונראה אם אנחנו מזהים משהו שיעזור לך."</div>
+    <h4>3. להשתמש בשפה פשוטה</h4>
+    <p>עדיף שלא להשתמש במילים כמו "מדדים", "דשבורד", "ניטור" או "התערבות", העשויות להיתפס כ"מחקריות" ולהרחיק. רצוי לאמץ שפה מזמינה, כגון: "נעקוב יחד", "נראה מה משתנה", "נבין מה עוזר", "נזהה מתי יותר קשה", "נחשוב יחד מה הצעד הבא".</p>
+    <h4>4. לתת לגיטימציה לקושי</h4>
+    <p>חשוב לנרמל מראש את האפשרות שמקבל השירות ישכח, יתעייף, או לא ירצה להשתמש באפליקציה כל יום.</p>
+    <div class="quote-box"><span class="quote-label">אפשר לומר</span>"יכול להיות שבהתחלה זה ירגיש קצת חדש או לא ברור. זה בסדר. ננסה יחד, ואם משהו לא נוח - נגיד את זה ונראה איך להתאים."</div>
+    <h4>5. שילוב השימוש באפליקציה כחלק משגרת היום</h4>
+    <p>רצוי לחבר את השימוש באפליקציה לפעולה קבועה שכבר קיימת ביום. לדוגמה:</p>
+    <ul>
+      <li>אפשר למלא בבוקר אחרי הקפה</li>
+      <li>אפשר לעשות את זה בערב לפני השינה</li>
+      <li>אפשר לפתוח את זה בתחילת הפגישה עם מתאם הטיפול או המדריך</li>
+      <li>אפשר לבחור יום קבוע שבו מסתכלים יחד על מה שהצטבר</li>
+    </ul>
+  `},
+  {"title":"מסרים מרכזיים ודוגמה לשיחה מלאה","summary":"חמישה דברים שמקבל השירות צריך להבין בסוף ההסבר הראשוני, ותסריט שיחה לדוגמה.","html":`
+    <p>בסוף ההסבר הראשוני, מקבל השירות צריך להבין חמישה דברים פשוטים:</p>
+    <ul>
+      <li>האפליקציה נועדה לעזור לו, לא לבדוק אותו</li>
+      <li>יש לו בחירה במה לשתף ובמה להתמקד</li>
+      <li>השימוש נעשה בקצב שלו - בלי לחץ</li>
+      <li>המידע עוזר לשיחה עם הצוות, ולא נשאר "סתם באפליקציה"</li>
+      <li>גם שימוש חלקי יכול לעזור</li>
+    </ul>
+    <h4>דוגמה לשיחה מלאה עם מקבל שירות</h4>
+    <div class="quote-box"><span class="quote-label">תסריט לדוגמה</span>"אני רוצה שנכיר היום כלי שיכול לעזור לנו בתהליך שלך. זו אפליקציה שמאפשרת לך לשתף איך עובר עליך היום, גם בדברים הקטנים - למשל איך ישנת, כמה אנרגיה יש לך, אם יצאת מהבית, או אם היה משהו שהשפיע עליך.<br><br>המטרה היא לא להעמיס עליך ולא לבדוק אותך. המטרה היא שנוכל להבין יחד מה עוזר לך ומה מקשה עליך. לפעמים בפגישה קשה לזכור את כל מה שקרה במהלך השבוע, והאפליקציה יכולה לעזור לנו לראות את התמונה בצורה יותר ברורה.<br><br>אתה תוכל להשתמש בזה בזמן שנוח לך, ואנחנו נחליט יחד מה מתאים לך למלא. נתחיל ממש בקטן. היום רק נכיר את זה יחד, נראה איך זה עובד, ונבחר דבר אחד שאולי יהיה לך שימושי.<br><br>אם משהו לא יהיה ברור או לא יתאים - נדבר על זה ונשנה. זה כלי שאמור לשרת אותך ואת התהליך שלך, לא להכביד עליך."</div>
+  `},
+  {"title":"החיבור בין השימוש באפליקציה לשיחה השיקומית","summary":"איך להפוך את מה שנאסף באפליקציה לבסיס לשיחה משמעותית בפגישה.","html":`
+    <p>האפליקציה אינה רק מקום שבו מקבל השירות "ממלא דברים" - הערך האמיתי נוצר כאשר משתמשים במה שנאסף כבסיס לשיחה. אפשר לשאול בפגישה:</p>
+    <ul>
+      <li>"ראיתי שסימנת שהיו לך יומיים עם פחות אנרגיה. מה אתה חושב שקרה שם?"</li>
+      <li>"שמתי לב שבימים שיצאת מהבית גם הדירוג של מצב הרוח היה גבוה יותר. זה משהו שגם אתה מרגיש?"</li>
+      <li>"כתבת שאתה גאה בזה שהצלחת להגיע לפגישה. בוא נעצור רגע על זה - מה עזר לך להגיע?"</li>
+      <li>"בחרת לעבוד על סדר יום. מה יכול להיות צעד קטן לשבוע הקרוב? ...בוא נכניס זאת כמשימה, כך שהאפליקציה תוכל לסייע לך בקידום צעד זה"</li>
+    </ul>
+    <div class="quote-box"><span class="quote-label">לזכור</span>כך האפליקציה הופכת מכלי טכני לכלי שמייצר שיחה, הבנה ומוטיבציה.</div>
+  `},
+  {"title":"איך להתמודד עם התנגדויות נפוצות","summary":"תגובות מומלצות לחמש התנגדויות שכיחות - מ\"אין לי כוח\" ועד \"מה זה ייתן לי?\".","html":`
+    <p>זה טבעי לחלוטין ששינוי מעלה שאלות, חששות או הסתייגויות - במיוחד כשנכנס כלי חדש לדרך העבודה היומיומית. התנגדויות הן לא סימן לבעיה, אלא חלק טבעי מתהליך של למידה, הסתגלות ודיוק משותף.</p>
+    <div class="content-block"><span class="field-label">התנגדות: "אין לי כוח לעוד אפליקציה"</span><p>אפשר להשיב: "אני מבין. באמת יש הרבה דברים שדורשים מאיתנו תשומת לב. לא נתחיל בגדול. נבחר רק פעולה אחת קטנה שתוכל לעזור לנו, ונראה אם זה בכלל מתאים לך."</p></div>
+    <div class="content-block"><span class="field-label">התנגדות: "אני לא טוב בטכנולוגיה"</span><p>אפשר להשיב: "זה בסדר גמור. לא צריך להיות טוב בטכנולוגיה. נעשה את זה יחד ואפשר להתקדם לאט. גם אם תשתמש רק בחלק קטן - זה יכול להספיק."</p></div>
+    <div class="content-block"><span class="field-label">התנגדות: "אני לא רוצה שכולם יראו עליי הכול"</span><p>אפשר להשיב: "חשוב לי שתרגיש בנוח. נחליט יחד מה מתאים לשתף ומה לא. המטרה היא לעזור לך, לא לחשוף דברים שלא נכון לך לשתף."</p></div>
+    <div class="content-block"><span class="field-label">התנגדות: "אני בטח אשכח למלא"</span><p>אפשר להשיב: "זה טבעי. הרבה אנשים שוכחים בהתחלה. נחשוב יחד מתי הכי קל לך לזכור - אולי בבוקר, אולי בערב, אולי לפני הפגישה שלנו. גם אם לא ממלאים כל יום, עדיין אפשר להיעזר בזה."</p></div>
+    <div class="content-block"><span class="field-label">התנגדות: "מה זה ייתן לי?"</span><p>אפשר להשיב: "זה יכול לעזור לנו לראות דברים שקשה לשים לב אליהם בזמן אמת, למשל מה משפיע על האנרגיה שלך, מה עוזר לך לצאת מהבית, או מתי יותר קשה לך. כשאנחנו רואים את זה יחד, קל יותר לבחור צעדים שמתאימים לך."</p></div>
+  `},
+  {"title":"תוכנית להטמעה מיטבית - חמישה שלבים","summary":"מסלול הדרגתי מהיכרות ראשונית ועד שימוש עצמאי ותדיר באפליקציה.","html":`
+    <h4>שלב ראשון – היכרות משותפת</h4>
+    <div class="content-block"><span class="field-label">המטרה</span><p>חשיפה הדרגתית לאפליקציה - בפגישה הראשונה לא מנסים להסביר את כל האפליקציה. המטרה היא רק ליצור חוויה ראשונה טובה, ומומלץ להתחיל עם דבר אחד קטן.</p></div>
+    <div class="content-block"><span class="field-label">המשימה</span><p>ניתן ורצוי להתחיל עם יחידת "מתחילים יחד". יחידה זו מסייעת במיפוי הראשוני של תפקודי מקבל השירות וזיהוי התחומים בהם מעוניין לערוך שינוי. לא חייבים להשלים את כל היחידה בבת אחת - ניתן להשלימה במקטעים, אך מומלץ להציב יעד להשלמתה.</p></div>
+    <div class="content-block"><span class="field-label">הצעדים</span><ul>
+      <li>פותחים יחד את האפליקציה</li>
+      <li>מסבירים בקצרה למה היא נועדה</li>
+      <li>מקצים למקבל השירות את יחידת "מתחילים יחד"</li>
+      <li>עוברים יחד על התוכן ומציעים למלא את התרגול יחד (לרוב, היחידות בנויות מתוכן חינוכי ותרגול - וניתן להקצות רק חלק מהרכיבים ביחידה)</li>
+    </ul></div>
+
+    <h4>שלב שני – בחירת מטרה אישית</h4>
+    <div class="content-block"><span class="field-label">המטרה</span><p>חיבור ישיר לתהליך ולמשמעות האישית.</p></div>
+    <div class="content-block"><span class="field-label">המשימה</span><p>לאחר ההיכרות הראשונית, מחברים את האפליקציה למשהו שמקבל השירות רוצה לשפר או להבין. למשל: שינה, אנרגיה, יציאה מהבית, סדר יום, נטילת תרופות, תזונה, קשר עם אנשים, תחושת מסוגלות וכדומה.</p></div>
+    <div class="content-block"><span class="field-label">הצעדים</span><p>מגדירים מטרה על ידי כניסה לתיק מקבל השירות ובוחרים ב"הוספת יעד" (ניתן להיזכר בתהליך הקמת יעד באמצעות המדריך למשתמש). כרגע הטרמינולוגיה טרם הוסדרה, ולכן: מטרה = יעד. על מנת לשייך צעדי פעולה למטרה, יש להיכנס ל"תוכנית טיפול" ולבחור ב"הקצאת אירוע". במפרט שיפתח, יש לבחור ב"מטלה" (מטלה = יעד).</p></div>
+
+    <h4>שלב שלישי – בחירת כלי נוסף לתרגול</h4>
+    <div class="content-block"><span class="field-label">המטרה</span><p>הרחבת השימוש באפליקציה והגדלת תחושת ערך.</p></div>
+    <div class="content-block"><span class="field-label">המשימה</span><p>בוחרים אחד מהכלים הנוגעים למטרה שהוגדרה עם מקבל השירות (ניתן לראות את הכלים הרלוונטיים לתחום הרצוי, על ידי חיפוש התחום בשורת החיפוש).</p></div>
+    <div class="content-block"><span class="field-label">הצעדים</span><p>נכנסים לתיק מקבל השירות ובוחרים בלשונית "יחידה" בסרגל הכלים. בשורת החיפוש מקלידים את התחום שבו הוצבה מטרה אישית, ובוחרים מתוך הרשימה שנפתחה את היחידה הרצויה. מומלץ להתחיל מיחידות קטנות, או להקצות רק חלק מהיחידה.</p></div>
+
+    <h4>שלב רביעי – שיחה על הנתונים / תמונת מצב</h4>
+    <div class="content-block"><span class="field-label">המטרה</span><p>חיבור הפעילות באפליקציה והנתונים/תמונת המצב שעלו מתוך הכלי, לתהליך האישי.</p></div>
+    <div class="content-block"><span class="field-label">המשימה</span><p>קיום פגישה משותפת והתבוננות על הכלי ומה שעלה דרכו.</p></div>
+    <div class="content-block"><span class="field-label">הצעדים</span><p>עידוד לשיח ולהתבוננות עצמית, למשל:</p><ul>
+      <li>מה היה לך קל?</li>
+      <li>מה היה לך מאתגר?</li>
+      <li>מה למדת על עצמך?</li>
+      <li>כיצד זה מסייע לך להתקדם לעבר השגת המטרה?</li>
+    </ul></div>
+
+    <h4>שלב חמישי – התנסות בכלי למילוי יומיומי</h4>
+    <p>(כלי שאנו מקצים באופן חוזר ובתדירות קבועה)</p>
+    <div class="content-block"><span class="field-label">המטרה</span><p>היכולת לזהות דפוסים או שינויים במצב היא תוצר של פעילות מתמדת ועקבית. לכן, על מנת להגביר את תחושת הערך עבור מקבל השירות, נעודד אותו לפעול באופן קבוע ותדיר.</p></div>
+    <div class="content-block"><span class="field-label">המשימה</span><p>קיום פגישה משותפת והתבוננות על הכלי ומה שעלה דרכו.</p></div>
+    <div class="content-block"><span class="field-label">הצעדים</span><ul>
+      <li>יש לבחור בהקצאת שאלון (בהתאם להנחיות במדריך)</li>
+      <li>בחירה במדד שיש משמעות לאיסופו ברמה יומיומית, למשל שאלון "מצב רוח"</li>
+      <li>קיום דיון ושיח על הממצאים, כעבור שבוע / שבועיים / חודש (תלוי במטרה)</li>
+    </ul></div>
+  `},
+  {"title":"כללי זהב להגברת היענות","summary":"שישה עקרונות פרקטיים לחיזוק המוטיבציה וההתמדה בשימוש.","html":`
+    <div class="content-block"><span class="field-label">1. להתחיל בקטן</span><p>עדיף פעולה אחת קטנה שמתבצעת, מאשר תכנית גדולה שלא קורית.</p></div>
+    <div class="content-block"><span class="field-label">2. לקשר למשהו שחשוב לאדם</span><p>כאשר מקבל השירות מבין איך זה קשור למטרה שלו - השימוש מקבל משמעות.</p></div>
+    <div class="content-block"><span class="field-label">3. להשתמש באפליקציה בתוך הפגישה</span><p>חשוב שמתאם הטיפול ישתמש במה שמקבל השירות מילא, על מנת ליצור משמעות. ללא שימוש במידע במהלך השיחה, סביר כי נאבד את שיתוף הפעולה שלו.</p></div>
+    <div class="content-block"><span class="field-label">4. לשבח מאמץ, לא רק התמדה מלאה</span><p>למשל: "ראיתי שמילאת פעמיים השבוע - זה מצוין, זה כבר נותן לנו משהו לעבוד אתו."</p></div>
+    <div class="content-block"><span class="field-label">5. לנרמל חוסר רצף</span><p>אי־מילוי אינו אומר כישלון. ניתן לחזק ולהגיד: "לא מילאת השבוע, וזה בסדר. בוא נבין מה הפריע ומה יכול לעזור בשבוע הבא."</p></div>
+    <div class="content-block"><span class="field-label">6. להפוך את זה להרגל</span><p>להצמיד את השימוש לפעולה קיימת: קפה של בוקר, סוף יום, פגישה שבועית, נטילת תרופות או פעילות קבועה אחרת.</p></div>
+  `},
+  {"title":"תפקיד איש הצוות בתהליך","summary":"הצוות הוא החוליה המחברת - איך להפוך את האפליקציה למרחב משותף של הבנה ובחירה.","html":`
+    <p>איש הצוות הוא החוליה המחברת. יש לכם תפקיד משמעותי בהפיכת האפליקציה לכלי שיש לו משמעות בתוך הקשר השיקומי.</p>
+    <p>העזרו בניסיון המקצועי שלכם ובהיכרותכם עם מקבל השירות, על מנת לבנות את הדרך לשימוש בעל ערך באפליקציה. עזרו לו להבין כיצד זה יכול לשרת את מימוש המטרות האישיות שלו, תנו מקום לחששות ולחסמים ושקפו את הכוחות.</p>
+    <p>הציעו להתחיל יחד באופן הדרגתי ובאופן שאינו מאיים. חזקו כל צעד בדרך לשינוי.</p>
+    <p>חזרו לנתונים יחד. התבוננו בהם. העזרו בהם לזהות דפוסים, שינויים, הצלחות וקשיים. הפכו את המידע לצעד הבא בתהליך.</p>
+    <div class="quote-box"><span class="quote-label">לזכור</span>האפליקציה של SequelCare יכולה להפוך לכלי משמעותי מאוד בתהליך השיקום - אבל הערך שלה נוצר דרך התיווך שלכם.</div>
+    <p>כאשר אתם מציגים אותה ברגישות, מחברים אותה למטרות האישיות של מקבל השירות, מתנסים בה יחד, ומשתמשים במידע שנאסף כבסיס לשיחה - היא הופכת מעוד כלי דיגיטלי למרחב משותף של הבנה, בחירה והתקדמות.</p>
+    <p><strong>המטרה היא לעבוד חכם יותר, רציף יותר, ואישי יותר - יחד עם מקבל השירות.</strong></p>
+  `},
+  {"title":"מה מקבל השירות רואה - \"SequelCare, נעים להכיר!\"","summary":"התוכן שנשלח למקבל השירות בהיכרות הראשונית עם האפליקציה.","html":`
+    <p>זהו התוכן שמקבל השירות מקבל בהיכרות הראשונית עם האפליקציה - שימושי כדי להכיר את השפה והמסרים שמוצגים לו, וליצור המשכיות בין המסר שלכם לבין מה שהוא רואה בעצמו.</p>
+    <h4>SequelCare - נעים להכיר!</h4>
+    <p>כמקבל.ת שירות בארגון שנבחר להוביל חדשנות בתחום השיקום והליווי, נפתחת בפניך הזדמנות לקחת חלק בחוויית ליווי אישית, מתקדמת ומשמעותית יותר - כזו שמחברת בין חיי היומיום, הכוחות האישיים והתהליך השיקומי, ומעודדת מעורבות פעילה, בחירה והתקדמות בדרך האישית שלך.</p>
+    <p>אפליקציית SequelCare נועדה לעזור לך ולצוות שמלווה אותך לעבוד יחד בצורה אישית, נוחה ומדויקת יותר – ולסייע לך להפוך לחלק פעיל ומשמעותי בתהליך שלך.</p>
+    <h4>באמצעות האפליקציה אפשר</h4>
+    <ul>
+      <li>לשתף איך עובר עליך היום</li>
+      <li>לעקוב אחרי דברים שחשובים לך</li>
+      <li>לזהות מה עוזר לך ומה מקשה עליך</li>
+      <li>לקבל תרגולים, משימות או תזכורות קטנות</li>
+      <li>לראות יחד התקדמות לאורך זמן</li>
+    </ul>
+    <h4>חשוב לדעת</h4>
+    <p>הצוות המקצועי ילווה את מקבל השירות לאורך הדרך, צעד אחר צעד. יחד, יבחרו במה נכון להתמקד, מה מתאים לשתף ובאיזה קצב להשתמש באפליקציה. גם שימוש קטן או חלקי יכול להיות משמעותי ולעזור בתהליך.</p>
+    <h4>איך מתחברים</h4>
+    <ol>
+      <li>הצוות מקים את מקבל השירות כמשתמש.ת באמצעות כתובת המייל שלו</li>
+      <li>נשלח אליו מייל עם קישור להורדת האפליקציה וסיסמה זמנית</li>
+      <li>מורידים את האפליקציה ומתחברים עם כתובת המייל והסיסמה הזמנית</li>
+      <li>בוחרים סיסמה קבועה ומתחילים להשתמש באפליקציה</li>
+    </ol>
+  `}
 ];
 
 // icons per domain (by name match), inline SVG paths (feather-style, stroke-based)
@@ -922,6 +1239,7 @@ backBtn.addEventListener('click', goBack);
 
 document.getElementById('cardLibrary').addEventListener('click', () => goTo('libraryView'));
 document.getElementById('cardScenarios').addEventListener('click', () => goTo('scenariosView'));
+document.getElementById('cardGuide').addEventListener('click', () => goTo('guideView'));
 
 /* ---------- LIBRARY: units within a domain ---------- */
 const unitList = document.getElementById('unitList');
@@ -996,6 +1314,29 @@ SCENARIOS.forEach((s) => {
   scenarioList.appendChild(row);
 });
 
+/* ---------- GUIDE ---------- */
+const guideListEl = document.getElementById('guideList');
+
+GUIDE_CHAPTERS.forEach((g, i) => {
+  const row = document.createElement('div');
+  row.className = 'guide-row';
+  row.innerHTML = `
+    <div class="guide-main">
+      <span class="guide-num">פרק ${i + 1}</span>
+      <div class="guide-title">${g.title}</div>
+      <p class="guide-desc">${g.summary}</p>
+    </div>
+    <div class="guide-actions">
+      <button class="btn btn-guide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        קריאת הפרק
+      </button>
+    </div>
+  `;
+  row.addEventListener('click', () => openGuideModal(g, i));
+  guideListEl.appendChild(row);
+});
+
 const overlay = document.getElementById('overlay');
 const modalTag = document.getElementById('modalTag');
 const modalTitle = document.getElementById('modalTitle');
@@ -1053,6 +1394,14 @@ function openScenarioModal(s){
   `;
   overlay.classList.add('active');
 }
+
+function openGuideModal(g, i){
+  modalTag.textContent = 'מדריך לצוות המקצועי · פרק ' + (i + 1);
+  modalTitle.textContent = g.title;
+  modalBody.innerHTML = `<div class="guide-content">${g.html}</div>`;
+  overlay.classList.add('active');
+}
+
 document.getElementById('modalClose').addEventListener('click', () => overlay.classList.remove('active'));
 overlay.addEventListener('click', (e) => { if(e.target === overlay) overlay.classList.remove('active'); });
 document.addEventListener('keydown', (e) => { if(e.key === 'Escape') overlay.classList.remove('active'); });
